@@ -1,14 +1,17 @@
 baseurl: '/'
 permalink: pretty
-title: 'Jekyll Serif'
+title: 'Brenton Oliver'
 
 logo:
   mobile: "images/logo/logo-mobile.svg"
   mobile_height: "32px"
   mobile_width: "32px"
+  BO_Title_color: "images/logo/BO_Title.png"
   desktop: "images/logo/logo.svg"
+  # desktop_height: "32px"
   desktop_height: "32px"
-  desktop_width: "120px"
+  # desktop_width: "120px"
+  desktop_width: "213px"
 
 home: 
   limit_services: 6

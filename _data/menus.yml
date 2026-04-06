@@ -13,8 +13,8 @@ main:
     weight: 5
 
 footer:
-  - name: "Home"
-    url: "/"
+  - name: "Services"
+    url: "/services/"
     weight: 1
   - name: "Contact"
     url: "/contact/"
