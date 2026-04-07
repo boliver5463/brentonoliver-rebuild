@@ -1,13 +1,10 @@
 ---
-title: "Business Advisory"
-date: 2018-12-28T15:14:39+10:00
-weight: 4
+title: "Custom Solutions"
+date: 2018-11-18T12:33:46+10:00
+weight: 2
 ---
 
-Business advisory is the final tier of the accounting pyramid.
-<!--more-->
-
-Business advisory involves reporting on performance as well as advising on strategic plans, risk assessment, and succession plans.
+Financial accounting (or financial accountancy) is the field of accounting concerned with the **summary, analysis and reporting** of financial transactions related to a business.
 
 ![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
 

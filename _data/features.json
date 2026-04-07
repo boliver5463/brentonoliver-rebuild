@@ -3,25 +3,34 @@
     "title": "Free Consultation",
     "description": "New clients receive an obligation free consultation.",
     "image": {
-      "url": "images/features/noun_branding_1885335.svg",
+      "url": "images/features/user-speak-rounded-svgrepo-com.svg",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Certified Accountants",
-    "description": "All members of our team are certified accountants.",
+    "title": "Reliable Software",
+    "description": "Our software solutions are designed to streamline your business.",
     "image": {
-      "url": "images/features/noun_The Process_1885341.svg",
+      "url": "images/features/code-svgrepo-com.svg",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Tax Compliance",
-    "description": "We stay up to date on the latest changes to the tax code.",
+    "title": "Integrations",
+    "description": "We specialize in integrating various software solutions to enhance your business operations.",
     "image": {
-      "url": "images/features/noun_3d modeling_1885342.svg",
+      "url": "images/features/cog-svgrepo-com.svg",
+      "width": 80,
+      "height": 80
+    }
+  },
+  {
+    "title": "IT Advice",
+    "description": "We provide expert IT advice to help you make informed decisions on your business.",
+    "image": {
+      "url": "images/features/hand-holding-globe-svgrepo-com.svg",
       "width": 80,
       "height": 80
     }
