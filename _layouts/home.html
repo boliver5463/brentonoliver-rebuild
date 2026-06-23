@@ -3,6 +3,87 @@ layout: default
 bodyClass: "page-home"
 ---
 
+ <!-- Video Background -->
+<div class="video-background">
+  <div class="overlay"></div>
+  <video 
+    autoplay 
+    muted 
+    loop 
+    playsinline 
+    poster="poster-image.jpg"
+  >
+    <!-- Multiple formats for cross-browser compatibility -->
+    <source src="../assets/videos/bg_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <!-- Fallback image if video fails to load -->
+  <div class="fallback-image"></div>
+</div>
+<script>
+    // Optional: Handle video loading failures
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('.video-background video');
+        const fallback = document.querySelector('.video-background .fallback-image');
+
+        // If video fails to load, show fallback image
+        video.addEventListener('error', function() {
+            video.style.display = 'none';
+            fallback.style.display = 'block';
+        });
+
+        // Also handle if video can't play (for some mobile browsers)
+        video.addEventListener('stalled', function() {
+            if (video.readyState < 2) {
+                video.style.display = 'none';
+                fallback.style.display = 'block';
+            }
+        });
+    });
+</script>
+<style>
+ /* Video Background Container */
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  z-index: -1;
+  overflow: hidden;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1;
+  }
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* For browsers that don't support video or when video fails */
+.video-background .fallback-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('fallback-image.jpg') center/cover no-repeat;
+    display: none;
+}
+</style>
+
 <div class="intro">
   <div class="container">
     <div class="row justify-content-start">
