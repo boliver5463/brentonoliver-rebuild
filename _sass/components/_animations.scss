@@ -1,0 +1,18 @@
+#wrapper {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+section {
+  scroll-snap-align: start;
+  min-height: 100dvh;
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  /* transform: translateY(0); */
+}

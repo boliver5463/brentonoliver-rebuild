@@ -40,7 +40,9 @@
   }
   ul {
     font-size: 30px;
-    font-family: $font-family-heading;
+    // font-family: $font-family-heading;
+    font-family: 'Menlo', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-weight: bold;
     text-align: center;
     list-style: none;
     padding: 0;

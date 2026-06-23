@@ -91,3 +91,20 @@
     border-left: .25em solid $secondary;
   }
 }
+
+.code {
+    position: relative;
+    /* Your existing styles */
+    font-weight: bold;
+}
+.code::before {
+    content: '<';
+    /* Optional styling */
+    font-weight: bold;
+}
+
+.code::after {
+    content: '/>';
+    /* Optional styling */
+    font-weight: bold;
+}

@@ -1,10 +1,18 @@
 .logo {
   display: none;
+  font-family: 'Menlo', 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: bold;
   @include media-breakpoint-up(sm) {
     display: block;
   }
   img {
     max-width: unset;
+  }
+  svg {
+    width: 100%;
+    height: auto;
+    max-width: 60px;
   }
   a {
     display: block;
@@ -14,15 +22,18 @@
 }
 .logo-mobile {
   display: block;
-  width: 40px;
+  width: auto;
   padding: 10px 0 10px 0;
   padding: 0;
+  font-size: 16px;
+  font-weight: bold;
   @include media-breakpoint-up(sm) {
     display: none;
   }
   img {
     width: 100%;
     height: auto;
+    max-width: 40px;
   }
   a {
     display: block;
