@@ -1,0 +1,62 @@
+<!-- Video Background -->
+<section class="video-background-wrapper">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="content">
+      <h1>Custom Software Solutions</h1>
+    </div>
+  </div>
+  <div class="video-background mobile-video">
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      poster="../images/bg_home_video_mobile.png"
+    >
+      <!-- Multiple formats for cross-browser compatibility -->
+      <source src="../assets/videos/bg_home_video_mobile.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      <!-- Fallback image if video fails to load -->
+      <img src="../images/bg_home_video_mobile.png" alt="Background">
+      <div class="fallback-image"></div></video>
+    
+  </div>
+  <div class="video-background desktop-video">
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      poster="../images/bg_home_video_desktop.png"
+    >
+      <!-- Multiple formats for cross-browser compatibility -->
+      <source src="../assets/videos/bg_home_video_desktop.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      <!-- Fallback image if video fails to load -->
+      <img src="../images/bg_home_video_desktop.png" alt="Background">
+      <div class="fallback-image"></div></video>
+    
+  </div>
+</section>
+<script>
+    // Optional: Handle video loading failures
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('.video-background video');
+        const fallback = document.querySelector('.video-background .fallback-image');
+
+        // If video fails to load, show fallback image
+        video.addEventListener('error', function() {
+            video.style.display = 'none';
+            fallback.style.display = 'block';
+        });
+
+        // Also handle if video can't play (for some mobile browsers)
+        video.addEventListener('stalled', function() {
+            if (video.readyState < 2) {
+                video.style.display = 'none';
+                fallback.style.display = 'block';
+            }
+        });
+    });
+</script>

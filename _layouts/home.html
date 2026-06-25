@@ -3,51 +3,7 @@ layout: default
 bodyClass: "page-home"
 ---
 
- <!-- Video Background -->
-<section>
-  <div class="video-background">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="content">
-        <h1>Custom Software Solutions</h1>
-      </div>
-    </div>
-    <video 
-      autoplay 
-      muted 
-      loop 
-      playsinline 
-      poster="poster-image.jpg"
-    >
-      <!-- Multiple formats for cross-browser compatibility -->
-      <source src="../assets/videos/bg_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- Fallback image if video fails to load -->
-    <div class="fallback-image"></div>
-  </div>
-</section>
-<script>
-    // Optional: Handle video loading failures
-    document.addEventListener('DOMContentLoaded', function() {
-        const video = document.querySelector('.video-background video');
-        const fallback = document.querySelector('.video-background .fallback-image');
-
-        // If video fails to load, show fallback image
-        video.addEventListener('error', function() {
-            video.style.display = 'none';
-            fallback.style.display = 'block';
-        });
-
-        // Also handle if video can't play (for some mobile browsers)
-        video.addEventListener('stalled', function() {
-            if (video.readyState < 2) {
-                video.style.display = 'none';
-                fallback.style.display = 'block';
-            }
-        });
-    });
-</script>
+ {% include hero-video.html %}
 
 <section class="intro">
   <div class="container">
@@ -69,7 +25,7 @@ bodyClass: "page-home"
 
 {% include worked-on.html %}
 
-<section class="strip">
+<section class="strip" id="services">
   <div class="container pt-6 pb-6 pb-md-10">
     <div class="row justify-content-start">
       {% assign limit = site.home.limit_services | default: 6 %}

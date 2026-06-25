@@ -1,0 +1,71 @@
+/* Video Background Container */
+.video-background-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  .container {
+    display: flex;
+    z-index: 1;
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    h1 {
+      color: #ffffff;
+      font-family: "Menlo","Consolas","Monaco","Courier New",monospace;
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    z-index: 1;
+  }
+}
+.video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  z-index: -1;
+  overflow: hidden;
+  video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  /* For browsers that don't support video or when video fails */
+  .fallback-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('fallback-image.jpg') center/cover no-repeat;
+    display: none;
+  }
+  &.mobile-video {
+    display: block;
+    @media(min-width: 768px) {
+      display: none;
+    }
+  }
+  &.desktop-video {
+    display: none;
+    @media(min-width: 768px) {
+      display: block;
+    }
+  }
+}
