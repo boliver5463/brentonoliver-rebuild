@@ -1,0 +1,50 @@
+<nav class="interactive-navigation">
+  <ul>
+  </ul>
+</nav>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = [];
+
+    sections.forEach(section => {
+      const nav = document.querySelector('.interactive-navigation ul');
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${section.id}`;
+      a.textContent = section.getAttribute('data-nav') || section.id;
+      li.appendChild(a);
+      nav.appendChild(li);
+      navLinks.push(a);
+    });
+
+
+    // Use Intersection Observer for better performance
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px 0px -50% 0px', // Trigger when section is in upper half
+        threshold: 0.1 // Trigger when 10% of section is visible
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+  });
+</script>
