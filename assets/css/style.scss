@@ -21,7 +21,7 @@ $font-family-base: Helvetica, Arial, sans-serif, -apple-system;
 $font-family-heading: "Playfair Display", serif, -apple-system;
 
 // Footer
-$footer-background-color: $primary;
+$footer-background-color: $white-offset;//$primary;
 $footer-text-color: $white;
 $sub-footer-background-color: darken($primary, 10%);
 $sub-footer-text-color: $white;
@@ -91,6 +91,8 @@ $sub-footer-text-color: $white;
 @import "components/experience";
 @import "components/interactive-navigation";
 @import "components/services";
+@import "components/offers";
+@import "components/contact";
 @import "components/logo";
 @import "components/main-menu";
 @import "components/main-menu-mobile";

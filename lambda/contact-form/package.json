@@ -1,0 +1,11 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "Verifies a Cloudflare Turnstile token and emails contact form submissions via Amazon SES.",
+  "type": "module",
+  "main": "index.mjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "comment": "No dependencies to install: @aws-sdk/client-sesv2 is provided by the Lambda Node.js 18.x/20.x runtime, and fetch is a Node 18+ global."
+}

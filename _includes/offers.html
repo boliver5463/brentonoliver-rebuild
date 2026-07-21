@@ -1,0 +1,97 @@
+<section class="offers" id="offers" data-nav="Offers">
+  <div class="container">
+    <h2 class="section-title text-center mb-2">Offers</h2>
+    <p class="offers-intro text-center mb-2">Simple, transparent pricing for building your website — from a quick static launch to a fully custom build that grows with you.</p>
+
+    <div class="offers-splide splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+
+          <li class="splide__slide">
+            <div class="offer">
+              <div class="offer-header">
+                <h3 class="offer-name">Basic</h3>
+                <p class="offer-tagline">Get online, fast.</p>
+              </div>
+              <ul class="offer-features">
+                <li>Static site build</li>
+                <li>No database</li>
+                <li>Mobile-friendly, responsive design</li>
+                <li>Up to 3 pages</li>
+              </ul>
+              <div class="offer-footer">
+                <a href="#contact" class="button">Get Started</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="splide__slide">
+            <div class="offer offer-featured">
+              <div class="offer-badge">Most Popular</div>
+              <div class="offer-header">
+                <h3 class="offer-name">Intermediate</h3>
+                <p class="offer-tagline">The right fit for a growing business.</p>
+              </div>
+              <ul class="offer-features">
+                <li>Everything in Basic</li>
+                <li>Edit your own site content</li>
+                <li>7+ pages</li>
+                <li>Database-backed features</li>
+                <li>SEO optimization</li>
+              </ul>
+              <div class="offer-footer">
+                <a href="#contact" class="button">Get Started</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="splide__slide">
+            <div class="offer">
+              <div class="offer-header">
+                <h3 class="offer-name">Custom</h3>
+                <p class="offer-tagline">Built for ever-increasing requirements.</p>
+              </div>
+              <ul class="offer-features">
+                <li>Everything in Intermediate</li>
+                <li>Bespoke functionality & integrations</li>
+                <li>Unlimited pages</li>
+                <li>Scalable architecture</li>
+                <li>Ongoing support & consultancy</li>
+              </ul>
+              <div class="offer-footer">
+                <a href="#contact" class="button">Let's Talk</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function offersSlider() {
+    const el = document.querySelector('.offers-splide');
+    if (!el || typeof Splide === 'undefined') return;
+
+    const slider = new Splide(el, {
+      // Let Splide measure each card's real width so it can center them
+      autoWidth: true,
+      focus: 'center',
+      perMove: 1,
+      gap: '20px',
+      // Center the edge cards too (no left/right bunching)
+      trimSpace: false,
+      // Open centered on the highlighted (Intermediate) offer
+      start: 1,
+      arrows: true,
+      pagination: true,
+      drag: true,
+    });
+
+    slider.mount();
+  }
+
+  offersSlider();
+</script>

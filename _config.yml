@@ -13,8 +13,14 @@ logo:
   # desktop_width: "120px"
   desktop_width: "213px"
 
-home: 
+home:
   limit_services: 6
+
+# Contact form. `endpoint` is your deployed Lambda Function URL (public, safe here).
+# No CAPTCHA for now — to add one later, set its SITE key here and the SECRET
+# only in the Lambda environment (never in this file / repo).
+contact_form:
+  endpoint: "https://e6yogpuxce4dgcr7hgb5gvupgy0avzgu.lambda-url.ap-southeast-2.on.aws/"
 
 collections:
   services:
@@ -42,6 +48,7 @@ plugins:
   - jekyll-environment-variables
 
 exclude:
+  - lambda
   - Gemfile
   - Gemfile.lock
   - node_modules

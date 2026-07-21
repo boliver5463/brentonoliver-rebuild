@@ -1,0 +1,82 @@
+<section class="contact" id="contact" data-nav="Contact">
+  <div class="container">
+    <h2 class="section-title text-center mb-2">Get in touch</h2>
+    <p class="contact-intro text-center mb-2">Tell me about your project and I'll get back to you.</p>
+
+    <form id="contact-form" class="contact-form" novalidate>
+      <div class="form-row">
+        <label for="cf-name">Name</label>
+        <input id="cf-name" name="name" type="text" required maxlength="100" autocomplete="name" />
+      </div>
+      <div class="form-row">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" required maxlength="150" autocomplete="email" />
+      </div>
+      <div class="form-row">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="6" required maxlength="3000"></textarea>
+      </div>
+
+      <button type="submit" class="button contact-submit">Send message</button>
+      <p class="contact-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+
+    var endpoint = '{{ site.contact_form.endpoint }}';
+    var status = form.querySelector('.contact-status');
+    var submit = form.querySelector('.contact-submit');
+
+    function setStatus(msg, type) {
+      status.textContent = msg;
+      status.className = 'contact-status' + (type ? ' is-' + type : '');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      setStatus('', '');
+
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !email || !message) {
+        setStatus('Please fill in your name, email and message.', 'error');
+        return;
+      }
+
+      submit.disabled = true;
+      setStatus('Sending…', '');
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, message: message })
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (body) {
+            return { ok: res.ok, body: body };
+          });
+        })
+        .then(function (r) {
+          if (r.ok) {
+            setStatus('Thanks — your message has been sent.', 'success');
+            form.reset();
+          } else {
+            setStatus((r.body && r.body.error) || 'Something went wrong. Please try again.', 'error');
+          }
+        })
+        .catch(function () {
+          setStatus('Network error. Please try again.', 'error');
+        })
+        .finally(function () {
+          submit.disabled = false;
+        });
+    });
+  })();
+</script>
