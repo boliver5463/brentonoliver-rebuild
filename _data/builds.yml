@@ -7,7 +7,8 @@
   url: "musclenation.org"
   theme: "commerce"
   image: "/images/builds/musclenation.png"
-  accent: "#f0a900"
+  logo: "/images/builds/musclenation-logo.png"
+  accent: "#3f83f8"
   bg: "#0d0d0d"
   description: >
     A high-volume Shopify storefront rebuilt for speed and conversion — headless
@@ -33,7 +34,8 @@
   url: "ose.com.au"
   theme: "corporate"
   image: "/images/builds/ose.png"
-  accent: "#2f6df6"
+  logo: "/images/builds/ose-logo.png"
+  accent: "#3f83f8"
   bg: "#0b1220"
   description: >
     A marketing site and client portal for an enterprise services firm, with a
@@ -60,7 +62,8 @@
   url: "foxracing.com.au"
   theme: "commerce"
   image: "/images/builds/foxracing.png"
-  accent: "#f26522"
+  logo: "/images/builds/foxracing-logo.png"
+  accent: "#3f83f8"
   bg: "#101010"
   description: >
     The Australian storefront for Fox's moto and mountain-bike range — a
@@ -88,7 +91,8 @@
   url: "crossriverrail.qld.gov.au"
   theme: "corporate"
   image: "/images/builds/crossriverrail.png"
-  accent: "#00a9a5"
+  logo: "/images/builds/crossriverrail-logo.png"
+  accent: "#3f83f8"
   bg: "#0c1a1f"
   description: >
     The public-facing home for Queensland's largest infrastructure project —

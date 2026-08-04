@@ -41,6 +41,11 @@
 
           <!-- Details -->
           <div class="build-body">
+            {% if build.logo %}
+              <div class="build-logo">
+                <img src="{{ build.logo | relative_url }}" alt="{{ build.company }} logo" loading="lazy" />
+              </div>
+            {% endif %}
             <div class="build-heading">
               <div>
                 <p class="build-company">{{ build.company }}</p>
