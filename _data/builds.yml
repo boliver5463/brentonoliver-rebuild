@@ -1,0 +1,97 @@
+# Website builds showcase (dummy data).
+# Each entry renders as a detailed visual card with a CSS browser mockup —
+# no image assets required. `theme` drives the mock-preview colours/layout.
+- company: "Muscle Nation"
+  project: "Supplements & Apparel Storefront"
+  year: "2023"
+  url: "musclenation.org"
+  theme: "commerce"
+  image: "/images/builds/musclenation.png"
+  accent: "#f0a900"
+  bg: "#0d0d0d"
+  description: >
+    A high-volume Shopify storefront rebuilt for speed and conversion — headless
+    product pages, a custom bundle builder, and a checkout flow tuned for mobile.
+  tags:
+    - "Shopify Hydrogen"
+    - "React"
+    - "GraphQL"
+    - "Klaviyo"
+  metrics:
+    - value: "+38%"
+      label: "Mobile conversion"
+    - value: "0.9s"
+      label: "LCP"
+    - value: "120k"
+      label: "Monthly orders"
+
+- company: "OSE"
+  project: "Corporate Services Platform"
+  year: "2022"
+  url: "ose.com.au"
+  theme: "corporate"
+  image: "/images/builds/ose.png"
+  accent: "#2f6df6"
+  bg: "#0b1220"
+  description: >
+    A marketing site and client portal for an enterprise services firm, with a
+    modular content system so the internal team can ship new landing pages
+    without a developer.
+  tags:
+    - "Next.js"
+    - "TypeScript"
+    - "Sanity CMS"
+    - "Vercel"
+  metrics:
+    - value: "60+"
+      label: "CMS-driven pages"
+    - value: "98"
+      label: "Lighthouse score"
+    - value: "-45%"
+      label: "Bounce rate"
+
+- company: "Cosentino"
+  project: "Product Catalogue & Configurator"
+  year: "2023"
+  url: "cosentino.example"
+  theme: "showcase"
+  accent: "#12b981"
+  bg: "#0f1512"
+  description: >
+    An interactive surface-material catalogue with a 3D-style configurator,
+    letting architects preview finishes and request samples inline.
+  tags:
+    - "Vue 3"
+    - "Three.js"
+    - "Node"
+    - "PostgreSQL"
+  metrics:
+    - value: "2.4k"
+      label: "Samples/mo"
+    - value: "1.1s"
+      label: "TTI"
+    - value: "12"
+      label: "Languages"
+
+- company: "Northwind Studio"
+  project: "Creative Agency Portfolio"
+  year: "2024"
+  url: "northwind.studio"
+  theme: "editorial"
+  accent: "#e0567c"
+  bg: "#130f14"
+  description: >
+    A bold, motion-led portfolio for a design studio — scroll-driven animation,
+    a case-study CMS, and an inquiry funnel wired straight into their CRM.
+  tags:
+    - "Astro"
+    - "GSAP"
+    - "Contentful"
+    - "HubSpot"
+  metrics:
+    - value: "3x"
+      label: "Inbound leads"
+    - value: "100"
+      label: "Accessibility"
+    - value: "0.4s"
+      label: "FID"

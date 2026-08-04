@@ -1,0 +1,76 @@
+{% if site.data.builds %}
+<section class="builds" id="builds" data-nav="Builds">
+  <div class="container pt-2 pb-2 pt-md-6 pb-md-6">
+    <h2 class="section-title text-center mb-2">Website Builds</h2>
+    <p class="builds-intro text-center mb-2">A closer look at sites I've designed and shipped for the companies I've worked with — from headless storefronts to content-driven platforms.</p>
+
+    <div class="row justify-content-center">
+      {% for build in site.data.builds %}
+      <div class="col-12 col-md-6 mb-4">
+        <article class="build-card" style="--accent: {{ build.accent }}; --bg: {{ build.bg }};">
+
+          <!-- Browser-chrome mockup + CSS-rendered site preview -->
+          <div class="build-browser theme-{{ build.theme }}">
+            <div class="build-browser-bar">
+              <span class="build-dot"></span>
+              <span class="build-dot"></span>
+              <span class="build-dot"></span>
+              <span class="build-url">{{ build.url }}</span>
+            </div>
+            <div class="build-viewport{% if build.image %} has-image{% endif %}">
+              {% if build.image %}
+              <img class="build-shot" src="{{ build.image | relative_url }}" alt="{{ build.company }} — {{ build.project }}" loading="lazy" />
+              {% else %}
+              <div class="build-mock-nav">
+                <span class="build-mock-logo"></span>
+                <span class="build-mock-links">
+                  <i></i><i></i><i></i>
+                </span>
+              </div>
+              <div class="build-mock-hero">
+                <span class="build-mock-h1"></span>
+                <span class="build-mock-h2"></span>
+                <span class="build-mock-cta"></span>
+              </div>
+              <div class="build-mock-grid">
+                <span></span><span></span><span></span>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class="build-body">
+            <div class="build-heading">
+              <div>
+                <p class="build-company">{{ build.company }}</p>
+                <h3 class="build-project">{{ build.project }}</h3>
+              </div>
+              <span class="build-year">{{ build.year }}</span>
+            </div>
+
+            <p class="build-description">{{ build.description }}</p>
+
+            <ul class="build-tags">
+              {% for tag in build.tags %}
+              <li>{{ tag }}</li>
+              {% endfor %}
+            </ul>
+
+            <div class="build-metrics">
+              {% for metric in build.metrics %}
+              <div class="build-metric">
+                <span class="build-metric-value">{{ metric.value }}</span>
+                <span class="build-metric-label">{{ metric.label }}</span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

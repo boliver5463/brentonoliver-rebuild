@@ -1,0 +1,292 @@
+.builds {
+  padding: 3rem 0;
+
+  .section-title {
+    color: #ffffff;
+  }
+
+  .builds-intro {
+    color: #eeeeee;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  // ---- Card ----------------------------------------------------------------
+  .build-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+
+      .build-viewport {
+        transform: translateY(-6%);
+      }
+    }
+  }
+
+  // ---- Browser mockup ------------------------------------------------------
+  .build-browser {
+    background: #1c1c1c;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .build-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    background: #202020;
+  }
+
+  .build-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #3a3a3a;
+
+    &:nth-child(1) { background: #ff5f56; }
+    &:nth-child(2) { background: #ffbd2e; }
+    &:nth-child(3) { background: #27c93f; }
+  }
+
+  .build-url {
+    margin-left: 10px;
+    flex: 1;
+    padding: 4px 12px;
+    background: #101010;
+    border-radius: 999px;
+    color: #9a9a9a;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // ---- CSS-rendered site preview -------------------------------------------
+  .build-viewport {
+    position: relative;
+    height: 220px;
+    padding: 16px;
+    overflow: hidden;
+    background: var(--bg);
+    transition: transform 0.35s ease;
+
+    // subtle brand-tinted glow behind the mock content
+    &::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 70%;
+      height: 90%;
+      background: radial-gradient(circle, var(--accent), transparent 68%);
+      opacity: 0.28;
+      pointer-events: none;
+    }
+
+    // image-backed preview: the screenshot replaces the CSS mock entirely
+    &.has-image {
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .build-shot {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .build-mock-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .build-mock-logo {
+    width: 46px;
+    height: 12px;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+
+  .build-mock-links {
+    display: flex;
+    gap: 8px;
+    i {
+      display: block;
+      width: 26px;
+      height: 8px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+  }
+
+  .build-mock-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+
+    .build-mock-h1 {
+      width: 78%;
+      height: 20px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .build-mock-h2 {
+      width: 55%;
+      height: 12px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .build-mock-cta {
+      margin-top: 6px;
+      width: 96px;
+      height: 26px;
+      border-radius: 6px;
+      background: var(--accent);
+    }
+  }
+
+  .build-mock-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    span {
+      height: 60px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  }
+
+  // Theme variations so each preview reads a little differently
+  .theme-commerce .build-mock-grid { grid-template-columns: repeat(3, 1fr); }
+  .theme-corporate .build-mock-hero .build-mock-h1 { width: 60%; }
+  .theme-showcase .build-mock-grid span { height: 74px; }
+  .theme-editorial {
+    .build-mock-grid { grid-template-columns: repeat(2, 1fr); }
+    .build-mock-grid span { height: 70px; }
+    .build-mock-hero .build-mock-h1 { width: 90%; height: 26px; }
+  }
+
+  // ---- Details -------------------------------------------------------------
+  .build-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+  }
+
+  .build-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .build-company {
+    margin: 0 0 2px;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .build-project {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .build-year {
+    flex-shrink: 0;
+    padding: 3px 10px;
+    border: 1px solid #333;
+    border-radius: 999px;
+    color: #bbbbbb;
+    font-size: 0.72rem;
+  }
+
+  .build-description {
+    margin: 0 0 16px;
+    color: #cfcfcf;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .build-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0 0 18px;
+
+    li {
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid #2f2f2f;
+      border-radius: 6px;
+      color: #dddddd;
+      font-size: 0.75rem;
+    }
+  }
+
+  .build-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .build-metric {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .build-metric-value {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .build-metric-label {
+    margin-top: 2px;
+    color: #9a9a9a;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
