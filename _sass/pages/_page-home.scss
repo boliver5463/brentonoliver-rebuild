@@ -1,5 +1,9 @@
 .page-home {
   section {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
     padding: 70px 0;
     @media(min-width: 768px) {
       padding: 80px 0;
