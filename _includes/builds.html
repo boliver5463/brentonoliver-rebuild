@@ -1,81 +1,128 @@
 {% if site.data.builds %}
 <section class="builds" id="builds" data-nav="Builds">
-  <div class="container pt-2 pb-2 pt-md-6 pb-md-6">
+  <div class="container pt-md-6">
     <h2 class="section-title text-center mb-2">Website Builds</h2>
-    <p class="builds-intro text-center mb-2">A closer look at sites I've designed and shipped for the companies I've worked with — from headless storefronts to content-driven platforms.</p>
+    <p class="builds-intro text-center mb-2 lh-sm">A closer look at sites I've designed and shipped for the companies I've worked with — from headless storefronts to content-driven platforms.</p>
+  </div>
 
-    <div class="row justify-content-center">
-      {% for build in site.data.builds %}
-      <div class="col-12 col-md-6 mb-4">
-        <article class="build-card" style="--accent: {{ build.accent }}; --bg: {{ build.bg }};">
+  <!-- Deliberately outside .container so the track runs the full viewport width -->
+  <div class="builds-splide splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {% for build in site.data.builds %}
+        <li class="splide__slide">
+          <article class="build-card" style="--accent: {{ build.accent }}; --bg: {{ build.bg }};">
 
-          <!-- Browser-chrome mockup + CSS-rendered site preview -->
-          <div class="build-browser theme-{{ build.theme }}">
-            <div class="build-browser-bar">
-              <span class="build-dot"></span>
-              <span class="build-dot"></span>
-              <span class="build-dot"></span>
-              <span class="build-url">{{ build.url }}</span>
+            <!-- Browser-chrome mockup + CSS-rendered site preview -->
+            <div class="build-browser theme-{{ build.theme }}">
+              <!-- <div class="build-browser-bar">
+                <span class="build-dot"></span>
+                <span class="build-dot"></span>
+                <span class="build-dot"></span>
+                <span class="build-url">{{ build.url }}</span>
+              </div> -->
+              <div class="build-viewport{% if build.image %} has-image{% endif %}">
+                {% if build.image %}
+                <img class="build-shot" src="{{ build.image | relative_url }}" alt="{{ build.company }} — {{ build.project }}" loading="lazy" />
+                {% else %}
+                <div class="build-mock-nav">
+                  <span class="build-mock-logo"></span>
+                  <span class="build-mock-links">
+                    <i></i><i></i><i></i>
+                  </span>
+                </div>
+                <div class="build-mock-hero">
+                  <span class="build-mock-h1"></span>
+                  <span class="build-mock-h2"></span>
+                  <span class="build-mock-cta"></span>
+                </div>
+                <div class="build-mock-grid">
+                  <span></span><span></span><span></span>
+                </div>
+                {% endif %}
+              </div>
             </div>
-            <div class="build-viewport{% if build.image %} has-image{% endif %}">
-              {% if build.image %}
-              <img class="build-shot" src="{{ build.image | relative_url }}" alt="{{ build.company }} — {{ build.project }}" loading="lazy" />
-              {% else %}
-              <div class="build-mock-nav">
-                <span class="build-mock-logo"></span>
-                <span class="build-mock-links">
-                  <i></i><i></i><i></i>
-                </span>
-              </div>
-              <div class="build-mock-hero">
-                <span class="build-mock-h1"></span>
-                <span class="build-mock-h2"></span>
-                <span class="build-mock-cta"></span>
-              </div>
-              <div class="build-mock-grid">
-                <span></span><span></span><span></span>
-              </div>
+
+            <!-- Details -->
+            <div class="build-body">
+              {% if build.logo %}
+                <div class="build-logo">
+                  <img src="{{ build.logo | relative_url }}" alt="{{ build.company }} logo" loading="lazy" />
+                </div>
               {% endif %}
-            </div>
-          </div>
-
-          <!-- Details -->
-          <div class="build-body">
-            {% if build.logo %}
-              <div class="build-logo">
-                <img src="{{ build.logo | relative_url }}" alt="{{ build.company }} logo" loading="lazy" />
+              <div class="build-heading">
+                <div>
+                  <p class="build-company">{{ build.company }}</p>
+                  <h3 class="build-project">{{ build.project }}</h3>
+                </div>
+                <span class="build-year">{{ build.year }}</span>
               </div>
-            {% endif %}
-            <div class="build-heading">
-              <div>
-                <p class="build-company">{{ build.company }}</p>
-                <h3 class="build-project">{{ build.project }}</h3>
-              </div>
-              <span class="build-year">{{ build.year }}</span>
+
+              <p class="build-description">{{ build.description }}</p>
+
+              <ul class="build-tags">
+                {% for tag in build.tags %}
+                <li>{{ tag }}</li>
+                {% endfor %}
+              </ul>
+
+              <!-- <div class="build-metrics">
+                {% for metric in build.metrics %}
+                <div class="build-metric">
+                  <span class="build-metric-value">{{ metric.value }}</span>
+                  <span class="build-metric-label">{{ metric.label }}</span>
+                </div>
+                {% endfor %}
+              </div> -->
             </div>
 
-            <p class="build-description">{{ build.description }}</p>
-
-            <ul class="build-tags">
-              {% for tag in build.tags %}
-              <li>{{ tag }}</li>
-              {% endfor %}
-            </ul>
-
-            <div class="build-metrics">
-              {% for metric in build.metrics %}
-              <div class="build-metric">
-                <span class="build-metric-value">{{ metric.value }}</span>
-                <span class="build-metric-label">{{ metric.label }}</span>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-
-        </article>
-      </div>
-      {% endfor %}
+          </article>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </section>
+
+<script>
+  function buildsSlider() {
+    const el = document.querySelector('.builds-splide');
+    if (!el || typeof Splide === 'undefined') return;
+
+    // Honour the OS "reduce motion" setting: still a draggable carousel with
+    // arrows, just without the continuous drift.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const slider = new Splide(el, {
+      type: 'loop',
+      // Cards are a fixed size and the track spans the viewport, so the number
+      // visible is whatever fits — no perPage/breakpoint juggling.
+      fixedWidth: '480px',
+      gap: '24px',
+      perMove: 1,
+      // Free drag reads as continuous motion rather than snapping between pages
+      drag: 'free',
+      arrows: false,
+      pagination: false,
+      autoScroll: {
+        // px per frame — ~24px/sec, a slow drift rather than a slideshow
+        speed: 0.4,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+      },
+      // Splide breakpoints are max-width, so this is the < 768px (mobile) case
+      breakpoints: {
+        767: { fixedWidth: '90vw', gap: '16px' },
+      },
+    });
+
+    if (reduceMotion || !window.splide || !window.splide.Extensions) {
+      slider.mount();
+    } else {
+      slider.mount(window.splide.Extensions);
+    }
+  }
+
+  buildsSlider();
+</script>
 {% endif %}

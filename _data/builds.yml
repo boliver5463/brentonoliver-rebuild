@@ -100,10 +100,8 @@
     traffic-disruption notices, and a community consultation hub, all built to
     WCAG 2.1 AA for a government audience.
   tags:
-    - "Jekyll"
-    - "Mapbox GL"
-    - "Sass"
-    - "WCAG 2.1 AA"
+    - "WordPress"
+    - "React"
   metrics:
     - value: "100"
       label: "Accessibility"
@@ -111,3 +109,61 @@
       label: "Visits/mo"
     - value: "0.4s"
       label: "INP"
+
+
+
+- company: "BFJ Digital"
+  project: "Agency Site & Case Study Library"
+  year: "2024"
+  url: "bfjdigital.com.au"
+  theme: "showcase"
+  image: "/images/builds/bfjdigital.png"
+  logo: "/images/builds/bfjdigital-logo.png"
+  accent: "#3f83f8"
+  bg: "#111318"
+  description: >
+    A portfolio site for a Shopify Plus agency, built around a case study
+    library the team can extend themselves — each project is a single content
+    entry that renders its own detail page, filtered index card and homepage
+    feature.
+  tags:
+    - "Jekyll"
+    - "SCSS"
+    - "Vanilla JS"
+    - "Netlify"
+  metrics:
+    - value: "30+"
+      label: "Case studies"
+    - value: "0.8s"
+      label: "LCP"
+    - value: "100"
+      label: "Lighthouse SEO"
+
+
+
+- company: "Remedy Drinks"
+  project: "Kombucha & Soda DTC Storefront"
+  year: "2025"
+  url: "remedydrinks.com"
+  theme: "commerce"
+  image: "/images/builds/remedydrinks.png"
+  logo: "/images/builds/remedydrinks-logo.png"
+  accent: "#3f83f8"
+  bg: "#14101c"
+  description: >
+    A direct-to-consumer storefront for a live-cultured drinks brand — flavour-led
+    product pages, mixed-case and variety-pack bundling, a subscription flow for
+    repeat orders, and a stockist finder that points shoppers to the nearest
+    retailer when they would rather buy off the shelf.
+  tags:
+    - "Shopify Plus"
+    - "Liquid"
+    - "Recharge"
+    - "Klaviyo"
+  metrics:
+    - value: "+41%"
+      label: "Subscription signups"
+    - value: "1.0s"
+      label: "LCP"
+    - value: "2.5k"
+      label: "Stockists mapped"
