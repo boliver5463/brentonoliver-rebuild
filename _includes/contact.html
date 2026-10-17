@@ -17,22 +17,45 @@
         <textarea id="cf-message" name="message" rows="6" required maxlength="3000"></textarea>
       </div>
 
+<!-- add inside the form, before the button -->
+      <input name="website" type="text" tabindex="-1" autocomplete="off"
+       style="position:absolute;left:-9999px" aria-hidden="true" />
+
       <button type="submit" class="button contact-submit">Send message</button>
       <p class="contact-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 
-</section>
+</section>  
 
 <script>
-  document.getElementById("contact").addEventListener("submit", async (e) => {
+  const statusEl = form.querySelector(".contact-status");
+  const submitBtn = form.querySelector("button[type=submit]");
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
-    const res = await fetch("{{ site.contact_form.endpoint }}", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    alert(res.ok ? "Thanks, message sent!" : "Something went wrong.");
+    const data = Object.fromEntries(new FormData(form));
+
+    if (!data.name?.trim() || !data.email?.trim() || !data.message?.trim()) {
+      statusEl.textContent = "Please fill in all fields.";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "Sending…";
+    try {
+      const res = await fetch("{{ site.contact_form.endpoint }}", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      statusEl.textContent = "Thanks, message sent!";
+    } catch (err) {
+      statusEl.textContent = "Something went wrong. Please try again.";
+    } finally {
+      submitBtn.disabled = false;
+    }
   });
 </script>
