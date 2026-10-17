@@ -20,7 +20,7 @@ home:
 # No CAPTCHA for now — to add one later, set its SITE key here and the SECRET
 # only in the Lambda environment (never in this file / repo).
 contact_form:
-  endpoint: "https://rapcvsxjvpyccui26huulbep3q0zqvks.lambda-url.ap-southeast-2.on.aws/"
+  endpoint: "https://e6yogpuxce4dgcr7hgb5gvupgy0avzgu.lambda-url.ap-southeast-2.on.aws/"
 
 collections:
   services:
