@@ -21,67 +21,18 @@
       <p class="contact-status" role="status" aria-live="polite"></p>
     </form>
   </div>
-  <!-- <footer class="contact-footer">
-    <div class="container text-center">
-      <p class="contact-copyright">Brenton Oliver &copy; {{ site.time | date: "%Y" }} {{ site.author.name }}. All rights reserved.</p>
-    </div>
-  </footer> -->
+
 </section>
 
 <script>
-  (function () {
-    var form = document.getElementById('contact-form');
-    if (!form) return;
-
-    var endpoint = '{{ site.contact_form.endpoint }}';
-    var status = form.querySelector('.contact-status');
-    var submit = form.querySelector('.contact-submit');
-
-    function setStatus(msg, type) {
-      status.textContent = msg;
-      status.className = 'contact-status' + (type ? ' is-' + type : '');
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      setStatus('', '');
-
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var message = document.getElementById('cf-message').value.trim();
-
-      if (!name || !email || !message) {
-        setStatus('Please fill in your name, email and message.', 'error');
-        return;
-      }
-
-      submit.disabled = true;
-      setStatus('Sending…', '');
-
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, email: email, message: message })
-      })
-        .then(function (res) {
-          return res.json().catch(function () { return {}; }).then(function (body) {
-            return { ok: res.ok, body: body };
-          });
-        })
-        .then(function (r) {
-          if (r.ok) {
-            setStatus('Thanks — your message has been sent.', 'success');
-            form.reset();
-          } else {
-            setStatus((r.body && r.body.error) || 'Something went wrong. Please try again.', 'error');
-          }
-        })
-        .catch(function () {
-          setStatus('Network error. Please try again.', 'error');
-        })
-        .finally(function () {
-          submit.disabled = false;
-        });
+  document.getElementById("contact").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target));
+    const res = await fetch("{{ site.contact_form.endpoint }}", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
-  })();
+    alert(res.ok ? "Thanks, message sent!" : "Something went wrong.");
+  });
 </script>

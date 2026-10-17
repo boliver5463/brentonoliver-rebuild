@@ -19,6 +19,9 @@
       @media(min-width: 768px) {
         padding: 20px;
         border-radis: 8px;
+        width: calc(50% - 10px);
+      }
+      @media(min-width: 1300px) {
         width: calc(33% - 10px);
       }
   }
